@@ -3,14 +3,13 @@ angular
 
 angular
     .module('ngPrevent')
-    .directive('prevent', function ($log) {
+    .directive('prevent', function ($log, $parse) {
         return {
             restrict: 'A',
             scope: true,
-            controller: function ($scope) {
-                console.log('Hello World!', $scope);
-            },
-            link: function (scope, element) {
+            link: function (scope, element, attrs) {
+                var localPreventOptions;
+
                 var disableUserSelect = function () {
                     element.css('user-select', 'none');
                     element.css('-ms-user-select', 'none');
@@ -18,6 +17,12 @@ angular
                     element.css('-khtml-user-select', 'none');
                     element.css('-webkit-user-select', 'none');
                     element.css('-webkit-touch-callout', 'none');
+                };
+
+                var disableLeftClick = function () {
+                    element.bind('click', function (event) {
+                        event.preventDefault();
+                    });
 
                 };
 
@@ -25,22 +30,29 @@ angular
                     element.bind('contextmenu', function (event) {
                         event.preventDefault();
                     });
-
                 };
 
-                if (angular.isDefined(scope.preventOptions)) {
-                    if (scope.preventOptions.disableSelection) {
+                if (attrs.prevent !== "") {
+                    localPreventOptions = $parse(attrs.prevent)(scope);
+                }
+                else {
+                    localPreventOptions = scope.preventOptions;
+                }
+
+                if (angular.isDefined(localPreventOptions)) {
+                    if (localPreventOptions.disableSelection) {
                         disableUserSelect();
                     }
 
-                    if (scope.preventOptions.disableContextMenu) {
+                    if (localPreventOptions.disableContextMenu) {
                         disableContextMenu();
                     }
                 }
+
                 else {
                     disableUserSelect();
+                    disableLeftClick();
                     disableContextMenu();
-                    $log.error('preventOptions is not defined!')
                 }
             }
         };
