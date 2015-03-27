@@ -27,9 +27,7 @@ angular
             }
 
             window.console.log = () => {
-                window.console.log = () => {
-                    return undefined;
-                }
+                window.console.log = () => undefined;
             };
         };
     });
