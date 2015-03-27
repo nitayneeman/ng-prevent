@@ -4,7 +4,7 @@ angular
 angular
     .module('ngPrevent')
     .service('Prevent', function () {
-        this.userSelect = function (element) {
+        this.userSelect = (element) => {
             element.css('user-select', 'none');
             element.css('-ms-user-select', 'none');
             element.css('-moz-user-select', 'none');
@@ -13,21 +13,21 @@ angular
             element.css('-webkit-touch-callout', 'none');
         };
 
-        this.contextMenu = function (element) {
-            element.bind('contextmenu', function (event) {
+        this.contextMenu = (element) => {
+            element.bind('contextmenu', (event) => {
                 event.preventDefault();
             });
         };
 
-        this.console = function (messages) {
+        this.console = (messages) => {
             if (angular.isArray(messages)) {
-                angular.forEach(messages, function (value) {
+                angular.forEach(messages, (value) => {
                     console.log("%c" + value.text, value.style);
                 });
             }
 
-            window.console.log = function () {
-                window.console.log = function () {
+            window.console.log = () => {
+                window.console.log = () => {
                     return undefined;
                 }
             };
@@ -36,11 +36,11 @@ angular
 
 angular
     .module('ngPrevent')
-    .directive('prevent', function ($parse, Prevent) {
+    .directive('prevent', ($parse, Prevent) => {
         return {
             restrict: 'A',
             scope: true,
-            controller: function ($scope, $element, $attrs) {
+            controller: ($scope, $element, $attrs) => {
                 if ($attrs.prevent !== "") {
                     $scope.localPreventOptions = $parse($attrs.prevent)($scope);
                 }
@@ -50,7 +50,7 @@ angular
 
                 Prevent.console($scope.localPreventOptions.console);
             },
-            link: function (scope, element) {
+            link: (scope, element) => {
                 if (angular.isDefined(scope.localPreventOptions)) {
                     if (scope.localPreventOptions.disableUserSelect) {
                         Prevent.userSelect(element);
