@@ -18,6 +18,20 @@ angular
                 event.preventDefault();
             });
         };
+
+        this.console = function (messages) {
+            if (angular.isArray(messages)) {
+                angular.forEach(messages, function (value) {
+                    console.log("%c" + value.text, value.style);
+                });
+            }
+
+            window.console.log = function () {
+                window.console.log = function () {
+                    return undefined;
+                }
+            };
+        };
     });
 
 angular
@@ -26,22 +40,23 @@ angular
         return {
             restrict: 'A',
             scope: true,
-            link: function (scope, element, attrs) {
-                var localPreventOptions;
-
-                if (attrs.prevent !== "") {
-                    localPreventOptions = $parse(attrs.prevent)(scope);
+            controller: function ($scope, $element, $attrs) {
+                if ($attrs.prevent !== "") {
+                    $scope.localPreventOptions = $parse($attrs.prevent)($scope);
                 }
                 else {
-                    localPreventOptions = scope.preventOptions;
+                    $scope.localPreventOptions = $scope.preventOptions;
                 }
 
-                if (angular.isDefined(localPreventOptions)) {
-                    if (localPreventOptions.disableUserSelect) {
+                Prevent.console($scope.localPreventOptions.console);
+            },
+            link: function (scope, element) {
+                if (angular.isDefined(scope.localPreventOptions)) {
+                    if (scope.localPreventOptions.disableUserSelect) {
                         Prevent.userSelect(element);
                     }
 
-                    if (localPreventOptions.disableContextMenu) {
+                    if (scope.localPreventOptions.disableContextMenu) {
                         Prevent.contextMenu(element);
                     }
                 }
