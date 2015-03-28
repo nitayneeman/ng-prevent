@@ -22,7 +22,7 @@ angular
         this.console = (messages) => {
             if (angular.isArray(messages)) {
                 angular.forEach(messages, (value) => {
-                    console.log("%c" + value.text, value.style);
+                    console.log('%c' + value.text, value.style);
                 });
             }
 
@@ -39,7 +39,7 @@ angular
             restrict: 'A',
             scope: true,
             controller: ($scope, $element, $attrs) => {
-                if ($attrs.prevent !== "") {
+                if ($attrs.prevent !== '') {
                     $scope.localPreventOptions = $parse($attrs.prevent)($scope);
                 }
                 else {
