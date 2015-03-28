@@ -68,6 +68,7 @@
   "yui": false,
   "globals": {
     "angular": false,
-    "require": false
+    "require": false,
+    "module": false
   }
 }
