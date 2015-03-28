@@ -14,7 +14,7 @@ gulp.task('dist', function () {
 });
 
 gulp.task('default', ['dist'], function () {
-    return gulp.src('src/*.js')
+    gulp.src('src/*.js')
         .pipe(traceur())
         .pipe(gulp.dest('dist'));
 });
