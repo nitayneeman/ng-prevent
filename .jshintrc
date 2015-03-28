@@ -69,6 +69,7 @@
   "globals": {
     "angular": false,
     "require": false,
-    "module": false
+    "module": false,
+    "inject": false
   }
 }
