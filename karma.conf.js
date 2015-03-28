@@ -6,14 +6,13 @@ module.exports = function (config) {
         ],
         files: [
             'bower_components/angular/angular.js',
-            'src/**/*.js'
+            'dist/**/*.js',
+            'test/**/*.js'
         ],
         preprocessors: {
-            'src/**/*.js': ['coverage']
+            'dist/**/*.js': ['coverage']
         },
-        exclude: [
-
-        ],
+        exclude: [],
         reporters: [
             'progress', 'coverage'
         ],
