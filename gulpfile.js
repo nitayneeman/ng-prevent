@@ -1,12 +1,7 @@
 var gulp = require('gulp');
-var uglify = require('gulp-uglify');
 var traceur = require('gulp-traceur');
-
-gulp.task('default', function () {
-    return gulp.src('src/*.js')
-        .pipe(traceur())
-        .pipe(gulp.dest('dist'));
-});
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
 
 gulp.task('dist', function () {
     gulp.src('src/*.js')
@@ -14,5 +9,12 @@ gulp.task('dist', function () {
         .pipe(uglify({
             mangle: false
         }))
-        .pipe(gulp.dest('dist'))
+        .pipe(rename('ng-prevent.min.js'))
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('default', ['dist'], function () {
+    return gulp.src('src/*.js')
+        .pipe(traceur())
+        .pipe(gulp.dest('dist'));
 });
