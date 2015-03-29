@@ -45,10 +45,10 @@ angular
                 else {
                     $scope.localPreventOptions = $scope.preventOptions;
                 }
-
-                Prevent.console($scope.localPreventOptions.console);
             },
             link: (scope, element) => {
+                Prevent.console(scope.localPreventOptions.console);
+
                 if (angular.isDefined(scope.localPreventOptions)) {
                     if (scope.localPreventOptions.disableUserSelect) {
                         Prevent.userSelect(element);
