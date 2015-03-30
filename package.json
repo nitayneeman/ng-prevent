@@ -1,6 +1,6 @@
 {
   "name": "ng-prevent",
-  "version": "0.0.1",
+  "version": "0.5.0",
   "description": "",
   "dependencies": {
     "karma": "^0.12.31",
