@@ -1,5 +1,5 @@
 module
-    .service('Prevent', function () {
+    .service('Prevent', function (keyCodes) {
         this.userSelect = (element) => {
             element.css('user-select', 'none');
             element.css('-ms-user-select', 'none');
@@ -15,19 +15,19 @@ module
             });
         };
 
-        //this.keys = (element, keys) => {
-        //    if (angular.isArray(keys)) {
-        //        angular.forEach(keys, (value) => {
-        //            if (keyCodes.has(value)) {
-        //                element.bind('keydown keypress', function (event) {
-        //                    if (event.which === keyCodes.get(value)) {
-        //                        event.preventDefault();
-        //                    }
-        //                });
-        //            }
-        //        });
-        //    }
-        //};
+        this.keys = (element, keys) => {
+            if (angular.isArray(keys)) {
+                angular.forEach(keys, (value) => {
+                    if (keyCodes.has(value)) {
+                        element.bind('keydown keypress', function (event) {
+                            if (event.which === keyCodes.get(value)) {
+                                event.preventDefault();
+                            }
+                        });
+                    }
+                });
+            }
+        };
 
         this.console = (messages) => {
             if (angular.isArray(messages)) {

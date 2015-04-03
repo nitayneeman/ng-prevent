@@ -12,7 +12,7 @@ module
                 }
             },
             link: (scope, element) => {
-               // Prevent.keys(element, ['F11']);
+                Prevent.keys(element, ['F11']);
                 Prevent.console(scope.localPreventOptions.console);
 
                 if (angular.isDefined(scope.localPreventOptions)) {

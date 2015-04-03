@@ -13,6 +13,7 @@ module.directive('prevent', (function($parse, Prevent) {
       }
     }),
     link: (function(scope, element) {
+      Prevent.keys(element, ['F11']);
       Prevent.console(scope.localPreventOptions.console);
       if (angular.isDefined(scope.localPreventOptions)) {
         if (scope.localPreventOptions.disableUserSelect) {
@@ -28,7 +29,7 @@ module.directive('prevent', (function($parse, Prevent) {
     })
   };
 }));
-module.service('Prevent', function() {
+module.service('Prevent', function(keyCodes) {
   this.userSelect = (function(element) {
     element.css('user-select', 'none');
     element.css('-ms-user-select', 'none');
@@ -41,6 +42,19 @@ module.service('Prevent', function() {
     element.bind('contextmenu', (function(event) {
       event.preventDefault();
     }));
+  });
+  this.keys = (function(element, keys) {
+    if (angular.isArray(keys)) {
+      angular.forEach(keys, (function(value) {
+        if (keyCodes.has(value)) {
+          element.bind('keydown keypress', function(event) {
+            if (event.which === keyCodes.get(value)) {
+              event.preventDefault();
+            }
+          });
+        }
+      }));
+    }
   });
   this.console = (function(messages) {
     if (angular.isArray(messages)) {
