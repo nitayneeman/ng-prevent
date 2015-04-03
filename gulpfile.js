@@ -3,8 +3,10 @@ var concat = require('gulp-concat');
 var traceur = require('gulp-traceur');
 var uglify = require('gulp-uglify');
 
+var sourceFilesPath = 'src/**/*';
+
 gulp.task('dist', function () {
-    gulp.src('src/*/*.js')
+    gulp.src(sourceFilesPath)
         .pipe(concat('ng-prevent.min.js'))
         .pipe(traceur())
         .pipe(uglify({
@@ -14,12 +16,12 @@ gulp.task('dist', function () {
 });
 
 gulp.task('default', ['dist'], function () {
-    gulp.src('src/*/*.js')
+    gulp.src(sourceFilesPath)
         .pipe(concat('ng-prevent.js'))
         .pipe(traceur())
         .pipe(gulp.dest('dist'));
 });
 
 gulp.task('watch', function() {
-    gulp.watch('src/*/*.js', ['default']);
+    gulp.watch(sourceFilesPath, ['default']);
 });

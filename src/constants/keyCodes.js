@@ -1,8 +1,4 @@
-angular
-    .module('ngPrevent', []);
-
-angular
-    .module('ngPrevent')
+module
     .constant('keyCodes', new Map([
         ['BACKSPACE', 8],
         ['TAB', 9],

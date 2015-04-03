@@ -1,8 +1,4 @@
-angular
-    .module('ngPrevent', []);
-
-angular
-    .module('ngPrevent')
+module
     .directive('prevent', ($parse, Prevent) => {
         return {
             restrict: 'A',
@@ -16,6 +12,7 @@ angular
                 }
             },
             link: (scope, element) => {
+               // Prevent.keys(element, ['F11']);
                 Prevent.console(scope.localPreventOptions.console);
 
                 if (angular.isDefined(scope.localPreventOptions)) {

@@ -1,14 +1,7 @@
 "use strict";
-angular.module('ngPrevent', []);
-angular.module('ngPrevent').constant('keyCodes', {
-  'BACKSPACE': 8,
-  'TAB': 9,
-  'ENTER': 13,
-  'F11': 122,
-  'F12': 123
-});
-angular.module('ngPrevent', []);
-angular.module('ngPrevent').directive('prevent', (function($parse, Prevent) {
+var module = angular.module('ngPrevent', []);
+module.constant('keyCodes', new Map([['BACKSPACE', 8], ['TAB', 9], ['ENTER', 13], ['F11', 122], ['F12', 123]]));
+module.directive('prevent', (function($parse, Prevent) {
   return {
     restrict: 'A',
     scope: true,
@@ -35,8 +28,7 @@ angular.module('ngPrevent').directive('prevent', (function($parse, Prevent) {
     })
   };
 }));
-angular.module('ngPrevent', []);
-angular.module('ngPrevent').service('Prevent', function() {
+module.service('Prevent', function() {
   this.userSelect = (function(element) {
     element.css('user-select', 'none');
     element.css('-ms-user-select', 'none');
@@ -49,13 +41,6 @@ angular.module('ngPrevent').service('Prevent', function() {
     element.bind('contextmenu', (function(event) {
       event.preventDefault();
     }));
-  });
-  this.key = (function(element, key) {
-    element.bind('keydown keypress', function(event) {
-      if (event.which === key) {
-        event.preventDefault();
-      }
-    });
   });
   this.console = (function(messages) {
     if (angular.isArray(messages)) {
