@@ -1,21 +1,21 @@
 var gulp = require('gulp');
+var concat = require('gulp-concat');
 var traceur = require('gulp-traceur');
 var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var watch = require('gulp-watch');
 
 gulp.task('dist', function () {
-    gulp.src('src/*.js')
+    gulp.src('src/*/*.js')
+        .pipe(concat('ng-prevent.min.js'))
         .pipe(traceur())
         .pipe(uglify({
             mangle: false
         }))
-        .pipe(rename('ng-prevent.min.js'))
         .pipe(gulp.dest('dist'));
 });
 
 gulp.task('default', ['dist'], function () {
-    gulp.src('src/*.js')
+    gulp.src('src/*/*.js')
+        .pipe(concat('ng-prevent.js'))
         .pipe(traceur())
         .pipe(gulp.dest('dist'));
 });

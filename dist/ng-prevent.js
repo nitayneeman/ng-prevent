@@ -1,5 +1,41 @@
 "use strict";
 angular.module('ngPrevent', []);
+angular.module('ngPrevent').consatnt('keyCodes', {
+  'BACKSPACE': 8,
+  'TAB': 9,
+  'ENTER': 13,
+  'F11': 122,
+  'F12': 123
+});
+angular.module('ngPrevent', []);
+angular.module('ngPrevent').directive('prevent', (function($parse, Prevent) {
+  return {
+    restrict: 'A',
+    scope: true,
+    controller: (function($scope, $element, $attrs) {
+      if ($attrs.prevent !== '') {
+        $scope.localPreventOptions = $parse($attrs.prevent)($scope);
+      } else {
+        $scope.localPreventOptions = $scope.preventOptions;
+      }
+    }),
+    link: (function(scope, element) {
+      Prevent.console(scope.localPreventOptions.console);
+      if (angular.isDefined(scope.localPreventOptions)) {
+        if (scope.localPreventOptions.disableUserSelect) {
+          Prevent.userSelect(element);
+        }
+        if (scope.localPreventOptions.disableContextMenu) {
+          Prevent.contextMenu(element);
+        }
+      } else {
+        Prevent.userSelect(element);
+        Prevent.contextMenu(element);
+      }
+    })
+  };
+}));
+angular.module('ngPrevent', []);
 angular.module('ngPrevent').service('Prevent', function() {
   this.userSelect = (function(element) {
     element.css('user-select', 'none');
@@ -34,30 +70,3 @@ angular.module('ngPrevent').service('Prevent', function() {
     });
   });
 });
-angular.module('ngPrevent').directive('prevent', (function($parse, Prevent) {
-  return {
-    restrict: 'A',
-    scope: true,
-    controller: (function($scope, $element, $attrs) {
-      if ($attrs.prevent !== '') {
-        $scope.localPreventOptions = $parse($attrs.prevent)($scope);
-      } else {
-        $scope.localPreventOptions = $scope.preventOptions;
-      }
-    }),
-    link: (function(scope, element) {
-      Prevent.console(scope.localPreventOptions.console);
-      if (angular.isDefined(scope.localPreventOptions)) {
-        if (scope.localPreventOptions.disableUserSelect) {
-          Prevent.userSelect(element);
-        }
-        if (scope.localPreventOptions.disableContextMenu) {
-          Prevent.contextMenu(element);
-        }
-      } else {
-        Prevent.userSelect(element);
-        Prevent.contextMenu(element);
-      }
-    })
-  };
-}));
