@@ -3,7 +3,7 @@ angular
 
 angular
     .module('ngPrevent')
-    .consatnt('keyCodes', {
+    .constant('keyCodes', {
         'BACKSPACE': 8,
         'TAB': 9,
         'ENTER': 13,

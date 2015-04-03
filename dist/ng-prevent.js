@@ -1,6 +1,6 @@
 "use strict";
 angular.module('ngPrevent', []);
-angular.module('ngPrevent').consatnt('keyCodes', {
+angular.module('ngPrevent').constant('keyCodes', {
   'BACKSPACE': 8,
   'TAB': 9,
   'ENTER': 13,
