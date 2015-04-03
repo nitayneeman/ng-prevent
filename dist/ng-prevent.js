@@ -1,6 +1,6 @@
 "use strict";
 var module = angular.module('ngPrevent', []);
-module.constant('keyCodes', new Map([['BACKSPACE', 8], ['TAB', 9], ['ENTER', 13], ['F11', 122], ['F12', 123]]));
+module.constant('keyCodes', new Map([['BACKSPACE', 8], ['TAB', 9], ['ENTER', 13], ['WIN_KEY', 91], ['F11', 122], ['F12', 123]]));
 module.directive('prevent', (function($parse, Prevent) {
   return {
     restrict: 'A',
@@ -13,8 +13,8 @@ module.directive('prevent', (function($parse, Prevent) {
       }
     }),
     link: (function(scope, element) {
-      Prevent.keys(element, ['F11']);
       Prevent.console(scope.localPreventOptions.console);
+      Prevent.keys(element, scope.localPreventOptions.keys);
       if (angular.isDefined(scope.localPreventOptions)) {
         if (scope.localPreventOptions.disableUserSelect) {
           Prevent.userSelect(element);

@@ -12,8 +12,8 @@ module
                 }
             },
             link: (scope, element) => {
-                Prevent.keys(element, ['F11']);
                 Prevent.console(scope.localPreventOptions.console);
+                Prevent.keys(element, scope.localPreventOptions.keys);
 
                 if (angular.isDefined(scope.localPreventOptions)) {
                     if (scope.localPreventOptions.disableUserSelect) {
