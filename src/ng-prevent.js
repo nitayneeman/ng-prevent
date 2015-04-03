@@ -19,6 +19,14 @@ angular
             });
         };
 
+        this.key = (element, key) => {
+            element.bind('keydown keypress', function (event) {
+                if (event.which === key) {
+                    event.preventDefault();
+                }
+            });
+        };
+
         this.console = (messages) => {
             if (angular.isArray(messages)) {
                 angular.forEach(messages, (value) => {

@@ -14,6 +14,13 @@ angular.module('ngPrevent').service('Prevent', function() {
       event.preventDefault();
     }));
   });
+  this.key = (function(element, key) {
+    element.bind('keydown keypress', function(event) {
+      if (event.which === key) {
+        event.preventDefault();
+      }
+    });
+  });
   this.console = (function(messages) {
     if (angular.isArray(messages)) {
       angular.forEach(messages, (function(value) {
