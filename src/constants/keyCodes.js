@@ -4,9 +4,9 @@ angular
 angular
     .module('ngPrevent')
     .consatnt('keyCodes', {
-        'Backspace': 8,
-        'Tab': 9,
-        'Enter': 13,
+        'BACKSPACE': 8,
+        'TAB': 9,
+        'ENTER': 13,
         'F11': 122,
         'F12': 123
     });
