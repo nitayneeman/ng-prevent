@@ -13,3 +13,4 @@
 ## Usage
 
 ## Dependencies
+AngularJS v1.0.3, or a newer version.
