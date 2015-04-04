@@ -9,6 +9,10 @@
 * Showing alerts on console.
 
 ## Install
+#### Bower
+```sh
+bower install ng-prevent
+```
 
 ## Usage
 1. Add one of dist files (original / min) to main file sources of project.
