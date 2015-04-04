@@ -12,7 +12,7 @@ module.directive('prevent', (function($log, $parse, Prevent) {
         if (angular.isDefined($scope.preventOptions)) {
           $scope.localPreventOptions = $scope.preventOptions;
         } else {
-          $log.error('Please define preventOptions on config, or supply an options locally on scope.');
+          $log.error('Please define preventOptions on run, or supply an options locally on scope.');
           throw 'ng-prevent error: preventOptions was not defined!';
         }
       }
