@@ -1,7 +1,6 @@
 # ng-prevent [![Build Status](https://travis-ci.org/nitayneeman/ng-prevent.svg?branch=master)](https://travis-ci.org/nitayneeman/ng-prevent)
 ##### An AngularJS directive which provides the ability to disable common behaviors of elements.
 
-
 ## Features
 * Disabling of user-select.
 * Disabling of context menu.
