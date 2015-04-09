@@ -1,4 +1,5 @@
-# ng-prevent
+# ng-prevent [![Build Status](https://travis-ci.org/nitayneeman/ng-prevent.svg?branch=master)](https://travis-ci.org/nitayneeman/ng-prevent)
+##### An AngularJS directive which provides the ability to disable common behaviors of elements.
 
 ## Features
 * Disabling of user-select.
@@ -21,14 +22,14 @@ bower install ng-prevent
 2. Inject 'ngPrevent' as a dependency of your angular module.
 3. Start to prevent on any element you want!
 
-# Samples
+## Samples
 Add a prevent attribute on your element:
 ```html
 <div prevent="myPreventOptions">
   <p>Text</p>
 </div>
 ```
-myPreventOptions should be on scope, for instance:
+myPreventOptions should be on scope:
 ```js
 demoModule.controller('MainController', function ($scope) {
     $scope.myPreventOptions = {
