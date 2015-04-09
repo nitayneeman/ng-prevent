@@ -26,9 +26,12 @@ bower install ng-prevent
 
 #### Options
 When you define prevent option on scope - you can use the following option:
-##### userSelect
-`true`: Preventing a user selection on the element.
+* userSelect <br />
+`true`: Preventing a user selection on the element. <br />
 `false`: Allowing a user selection on the element.
+* contextMenu <br />
+`true`: Preventing a context menu on the element. <br />
+`false`: Allowing a context menu on the element.
 
 ## Samples
 Add a prevent attribute on your element:
