@@ -1,8 +1,5 @@
 # ng-prevent [![Build Status](https://travis-ci.org/nitayneeman/ng-prevent.svg?branch=master)](https://travis-ci.org/nitayneeman/ng-prevent)
 ##### An AngularJS directive which provides the ability to disable common behaviors of elements.
----
-[Download]('')
----
 
 ## Features
 * Disabling of user-select.
@@ -25,7 +22,7 @@ bower install ng-prevent
 3. Start to prevent on any element you want!
 
 #### Options
-When you define prevent option on scope - you can use the following options:
+When you define prevent options on scope - you can use the following option:
 * userSelect <br />
 `true`: Preventing a user selection on the element. <br />
 `false`: Allowing a user selection on the element.
