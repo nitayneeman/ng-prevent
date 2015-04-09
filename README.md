@@ -23,11 +23,12 @@ bower install ng-prevent
 1. Add one of dist files (original / min) to main file sources of project.
 2. Inject 'ngPrevent' as a dependency of your angular module.
 3. Start to prevent on any element you want!
+
 #### Options
 When you define prevent option on scope - you can use the following option:
-- *userSelect* 
-    'true': preventing a user selection on the element.
-    'false': allowing a user selection on the element.
+##### userSelect
+    `true`: preventing a user selection on the element.
+    `false`: allowing a user selection on the element.
 
 ## Samples
 Add a prevent attribute on your element:
