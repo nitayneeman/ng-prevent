@@ -34,7 +34,7 @@ When you define prevent options on scope - you can use the following option:
 Acceptable values are: `BACKSPACE`, `TAB`, `ENTER`, `WIN_KEY`, `F11` and `F12`.
 * console <br />
 `[]`: Preventing an actions on console. <br />
-The values of array are messages to console.
+The values of array are messages to console. <br />
 A message object pattern: `{ text: 'Message', style: 'CSS properties'}`
 
 ## Samples
