@@ -29,6 +29,13 @@ When you define prevent options on scope - you can use the following option:
 * contextMenu <br />
 `true`: Preventing a context menu on the element. <br />
 `false`: Allowing a context menu on the element.
+* keys <br />
+`[]`: Preventing a key press on the element. <br />
+Acceptable values are: `BACKSPACE`, `TAB`, `ENTER`, `WIN_KEY`, `F11` and `F12`.
+* console <br />
+`[]`: Preventing an actions on console. <br />
+The values of array are messages to console.
+A message object pattern: `{ text: 'Message', style: 'CSS properties'}`
 
 ## Samples
 Add a prevent attribute on your element:
