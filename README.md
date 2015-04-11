@@ -53,3 +53,28 @@ demoModule.controller('MainController', function ($scope) {
     };
 });
 ```
+
+Alternatively, definiton of preventOptions can be on rootScope:
+```js
+demoModule.run(function ($rootScope) {
+    $rootScope.preventOptions = {
+        userSelect: true,
+        contextMenu: true,
+        console: [
+            {
+                text: 'Stop!',
+                style: 'color: red; font-size: 35pt'
+            },
+            {
+                text: 'Not allowed here!',
+                style: 'color: white; font-size: 30pt'
+            }
+        ],
+        keys: [
+            'F12',
+            'F11',
+            'WIN_KEY'
+        ]
+    };
+});
+```
