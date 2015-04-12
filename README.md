@@ -22,7 +22,7 @@ bower install ng-prevent
 3. Start to prevent on any element you want!
 
 #### Options
-When you define prevent options on scope - you can use the following option:
+When you define prevent options on scope - you can use the following options:
 * userSelect <br />
 `true`: Preventing a user selection on the element. <br />
 `false`: Allowing a user selection on the element.
