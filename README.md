@@ -78,3 +78,4 @@ demoModule.run(function ($rootScope) {
     };
 });
 ```
+**Important note:** *Defintion of preventOptions on rootScope is overrides any other definition on children scopes. Use rootScope only if you want to prevent on the HTML tag. Any other mode, define on the appropriate scope.*
