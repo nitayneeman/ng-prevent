@@ -12,10 +12,7 @@
 ## Getting started
 #### Dependencies
 AngularJS v1.0.3, or a newer version.
-#### Install via Bower
-```sh
-bower install ng-prevent
-```
+
 #### Usage
 1. Add one of dist files (original / min) to main file sources of project.
 2. Inject 'ngPrevent' as a dependency of your angular module.
